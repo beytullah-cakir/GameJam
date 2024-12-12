@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         inputActions.Player.Attack.started += ctx => StartFire();
         inputActions.Player.Attack.canceled += ctx => StopFire();
         inputActions.Player.Aim.performed += ctx => AimControl();
-        inputActions.Player.Interact.performed += ctx => InteractObject();
+        inputActions.Player.Interact.started += ctx => InteractObject();
     }
 
     private void OnDisable()
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         inputActions.Player.Attack.started -= ctx => StartFire();
         inputActions.Player.Attack.canceled -= ctx => StopFire();
         inputActions.Player.Aim.performed -= ctx => AimControl();
-        inputActions.Player.Interact.performed -= ctx => InteractObject();
+        inputActions.Player.Interact.started -= ctx => InteractObject();
     }
 
     private void Awake()
@@ -170,10 +170,15 @@ public class Player : MonoBehaviour
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, 999f))
         {
-            if (hit.collider.tag=="Take")
+            
+            switch (hit.collider.tag)
             {
-                Destroy(hit.collider.gameObject);
-                itemsCount++;
+
+                case "PowerItem":
+                    Destroy(hit.collider.gameObject);
+                    itemsCount++;
+                    GameManager.Instance.IncreaseAmount();
+                    break;
             }
             
         }

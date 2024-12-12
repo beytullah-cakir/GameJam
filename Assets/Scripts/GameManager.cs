@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
@@ -21,7 +22,10 @@ public class GameManager : MonoBehaviour
     private Player _player;
 
 
-    public float amount = 50;
+    public float amount;
+    public float maxAmount = 50;
+    public float reduceRate = 1f;
+    public float increaseAmount=10;
     public TextMeshProUGUI itemsCount;
 
 
@@ -36,19 +40,36 @@ public class GameManager : MonoBehaviour
         _player = Player;
         _uiManager = UIManager;
         Instance = this;
+        amount = maxAmount;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(ReduceAmount());
     }
 
 
     void Update()
     {
-        InvokeRepeating(nameof(ReduceAmount), 1, 1);
         itemsCount.text = $"{Player.itemsCount}";
     }
 
 
-    public void ReduceAmount()
+    IEnumerator ReduceAmount()
     {
-        amount -= 1;
-        if (amount < 0f) amount = 0f;
+        while (true)
+        {
+            amount--;
+            if (amount < 0f) amount = 0f;
+            yield return new WaitForSeconds(reduceRate);
+        }
     }
+
+
+    public void IncreaseAmount()
+    {
+        amount += increaseAmount;
+        if(amount>maxAmount) amount = maxAmount;
+    }
+
 }
