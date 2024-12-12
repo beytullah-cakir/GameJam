@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject aimCursor, normalCursor;
     void Start()
     {
         
@@ -11,6 +12,12 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ManageCursor();
+    }
+
+    public void ManageCursor()
+    {
+        aimCursor.SetActive(GameManager.Instance.Player.isAiming);
+        normalCursor.SetActive(!GameManager.Instance.Player.isAiming);
     }
 }

@@ -23,30 +23,30 @@ public class Player : MonoBehaviour
     public CinemachineCamera thirdPersonFollow;
     private PlayerInput inputActions;
     public Transform firePos;
-    public Transform characterFollow,aimFollow;
+    public Transform characterFollow, aimFollow;
     public float bulletVelocity = 32;
     public float fireRate = 2;
-    public LayerMask aimColliderLayerMask;
+    public LayerMask aimColliderLayerMask, takeableObjects;
     private Vector3 mouseWorldPos;
+    public bool isAiming;
+    public float itemsCount;
 
-
-    public void OnEnable()
+    private void OnEnable()
     {
         inputActions.Enable();
         inputActions.Player.Attack.started += ctx => StartFire();
         inputActions.Player.Attack.canceled += ctx => StopFire();
-        inputActions.Player.Aim.performed += ctx => StartAim();
-        inputActions.Player.Aim.canceled += ctx => StopAim();
+        inputActions.Player.Aim.performed += ctx => AimControl();
+        inputActions.Player.Interact.performed += ctx => InteractObject();
     }
-
 
     private void OnDisable()
     {
         inputActions.Disable();
         inputActions.Player.Attack.started -= ctx => StartFire();
         inputActions.Player.Attack.canceled -= ctx => StopFire();
-        inputActions.Player.Aim.performed -= ctx => StartAim();
-        inputActions.Player.Aim.canceled -= ctx => StopAim();
+        inputActions.Player.Aim.performed -= ctx => AimControl();
+        inputActions.Player.Interact.performed -= ctx => InteractObject();
     }
 
     private void Awake()
@@ -74,6 +74,22 @@ public class Player : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    public void AimControl()
+    {
+        isAiming = !isAiming;
+
+        if (isAiming)
+        {
+            thirdPersonFollow.Follow = aimFollow;
+            thirdPersonFollow.LookAt = aimFollow;
+        }
+        else
+        {
+            thirdPersonFollow.Follow = characterFollow;
+            thirdPersonFollow.LookAt = characterFollow;
+        }
+    }
+
     public void StartFire()
     {
         InvokeRepeating(nameof(Fire), 0f, fireRate);
@@ -84,18 +100,15 @@ public class Player : MonoBehaviour
         CancelInvoke(nameof(Fire));
     }
 
-
     private void Fire()
     {
         GameObject bullet = ObjectPool.instance.GetBullet();
-        Vector3 aimDir=(mouseWorldPos-firePos.position).normalized;
-
-        
+        Vector3 aimDir = (mouseWorldPos - firePos.position).normalized;
 
         if (bullet != null)
         {
             bullet.transform.position = firePos.position;
-            bullet.transform.rotation = Quaternion.LookRotation(aimDir,Vector3.up);
+            bullet.transform.rotation = Quaternion.LookRotation(aimDir, Vector3.up);
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
             bulletRb.linearVelocity = aimDir * bulletVelocity;
             bullet.SetActive(true);
@@ -118,7 +131,6 @@ public class Player : MonoBehaviour
 
     public void HandleMovement()
     {
-
         Vector3 moveDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
 
         float mouseX = lookInput.x * mouseSensitivity * Time.deltaTime;
@@ -126,16 +138,11 @@ public class Player : MonoBehaviour
 
         mouseY = Mathf.Clamp(mouseY, -15f, 15f);
 
-
-
         RotateCamera(mouseY);
         transform.Rotate(Vector3.up * mouseX);
         transform.position += moveDirection * speed * Time.deltaTime;
         anm.SetFloat("PosX", moveInput.x);
         anm.SetFloat("PosY", moveInput.y);
-
-
-
     }
 
     void RotateCamera(float mouseY)
@@ -153,22 +160,22 @@ public class Player : MonoBehaviour
         aimFollow.localEulerAngles = new Vector3(clampedRotation, aimFollow.localEulerAngles.y, aimFollow.localEulerAngles.z);
     }
 
-    private void StartAim()
-    {
-        thirdPersonFollow.Follow=aimFollow;
-        thirdPersonFollow.LookAt = aimFollow;
-    }
-
-    private void StopAim()
-    {
-        thirdPersonFollow.Follow=characterFollow;
-        thirdPersonFollow.LookAt = characterFollow;
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("EnemyAttack")) TakeDamage();
     }
 
+    public void InteractObject()
+    {
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, 999f))
+        {
+            if (hit.collider.tag=="Take")
+            {
+                Destroy(hit.collider.gameObject);
+                itemsCount++;
+            }
+            
+        }
+    }
 }
