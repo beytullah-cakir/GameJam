@@ -1,127 +1,174 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    PlayerInput input;
-    Vector2 movement;
-    Vector3 direction;
-    public float turnSpeed;
-    public float speed;
-    Rigidbody rb;
-    CharacterController characterController;
-    public Transform firePos;
-    public float bulletVelocity = 15;
+    #region Health
+    public Slider healthBar;
+    public float maxHealth = 100;
+    private float currentHealth;
+    #endregion
 
-    private void OnEnable()
+    public float speed = 5f;
+    public float mouseSensitivity = 100f;
+    private Vector2 moveInput;
+    private Vector2 lookInput;
+    private Transform playerCamera;
+    private float xRotation = 0f;
+    private Animator anm;
+    private CharacterController characterController;
+    public CinemachineCamera thirdPersonFollow;
+    private PlayerInput inputActions;
+    public Transform firePos;
+    public Transform characterFollow,aimFollow;
+    public float bulletVelocity = 32;
+    public float fireRate = 2;
+    public LayerMask aimColliderLayerMask;
+    private Vector3 mouseWorldPos;
+
+
+    public void OnEnable()
     {
-        input.Enable();
-        input.Player.Attack.performed += ctx => Fire();
+        inputActions.Enable();
+        inputActions.Player.Attack.started += ctx => StartFire();
+        inputActions.Player.Attack.canceled += ctx => StopFire();
+        inputActions.Player.Aim.performed += ctx => StartAim();
+        inputActions.Player.Aim.canceled += ctx => StopAim();
     }
+
+
     private void OnDisable()
     {
-        input.Disable();
-        input.Player.Attack.performed -= ctx => Fire();
+        inputActions.Disable();
+        inputActions.Player.Attack.started -= ctx => StartFire();
+        inputActions.Player.Attack.canceled -= ctx => StopFire();
+        inputActions.Player.Aim.performed -= ctx => StartAim();
+        inputActions.Player.Aim.canceled -= ctx => StopAim();
     }
-    void Awake()
+
+    private void Awake()
     {
-        input = new PlayerInput();
+        currentHealth = maxHealth;
+        healthBar.value = currentHealth;
+        playerCamera = Camera.main.transform;
+        inputActions = new PlayerInput();
+        anm = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        rb = GetComponent<Rigidbody>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void TakeDamage()
+    {
+        currentHealth -= 10;
+        healthBar.value = currentHealth / maxHealth;
+        if (currentHealth <= 0) Death();
+    }
+
+    public void Death()
+    {
+        currentHealth = 0;
+        Time.timeScale = 0;
+    }
+
+    public void StartFire()
+    {
+        InvokeRepeating(nameof(Fire), 0f, fireRate);
+    }
+
+    private void StopFire()
+    {
+        CancelInvoke(nameof(Fire));
     }
 
 
-
-    private void FixedUpdate()
+    private void Fire()
     {
-        Movement();
-
-
-    }
-
-    public void Fire()
-    {
-
         GameObject bullet = ObjectPool.instance.GetBullet();
+        Vector3 aimDir=(mouseWorldPos-firePos.position).normalized;
+
+        
 
         if (bullet != null)
         {
             bullet.transform.position = firePos.position;
-            bullet.transform.rotation = firePos.rotation;
+            bullet.transform.rotation = Quaternion.LookRotation(aimDir,Vector3.up);
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-            bulletRb.linearVelocity = firePos.forward * bulletVelocity;
+            bulletRb.linearVelocity = aimDir * bulletVelocity;
             bullet.SetActive(true);
         }
     }
 
-
-    private void Movement()
+    private void Update()
     {
-        movement = input.Player.Move.ReadValue<Vector2>();
-        direction = new Vector3(movement.x, 0, movement.y).normalized;
+        HandleMovement();
 
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
-
-        forward.y = 0;
-        right.y = 0;
-
-        forward.Normalize();
-        right.Normalize();
-
-        forward = forward * direction.z;
-        right = right * direction.x;
-
-        if (direction.x != 0 || direction.z != 0)
+        moveInput = inputActions.Player.Move.ReadValue<Vector2>();
+        lookInput = inputActions.Player.Look.ReadValue<Vector2>();
+        Vector2 screen = new Vector2(Screen.width / 2, Screen.height / 2);
+        Ray ray = Camera.main.ScreenPointToRay(screen);
+        if (Physics.Raycast(ray, out RaycastHit hit, 999f, aimColliderLayerMask))
         {
-            float angle = Mathf.Atan2(forward.x + right.x, forward.z + right.z) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.Euler(0, angle, 0);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
-
-        }
-
-
-
-        Vector3 verticalDirection = Vector3.up * direction.y;
-        Vector3 horizontalDirection = forward + right;
-        Vector3 move = verticalDirection + horizontalDirection;
-
-
-        characterController.Move(speed * Time.deltaTime * move);
-        //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSpeed, Time.deltaTime);
-        //transform.rotation = Quaternion.Euler(0, angle, 0);
-    }
-
-
-    private void Rotation()
-    {
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
-
-        forward.y = 0;
-        right.y = 0;
-
-        forward.Normalize();
-        right.Normalize();
-
-        
-        forward = forward * direction.z;
-        right = right * direction.x;
-
-        if (direction.x != 0 || direction.x != 0)
-        {
-            float targetAngle = Mathf.Atan2(forward.x + right.x, forward.z + right.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSpeed, Time.deltaTime);
-            transform.rotation = Quaternion.Euler(0, angle, 0);
-            
+            mouseWorldPos = hit.point;
         }
     }
 
-
-    void Update()
+    public void HandleMovement()
     {
 
+        Vector3 moveDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
+
+        float mouseX = lookInput.x * mouseSensitivity * Time.deltaTime;
+        float mouseY = lookInput.y * mouseSensitivity * Time.deltaTime;
+
+        mouseY = Mathf.Clamp(mouseY, -15f, 15f);
+
+
+
+        RotateCamera(mouseY);
+        transform.Rotate(Vector3.up * mouseX);
+        transform.position += moveDirection * speed * Time.deltaTime;
+        anm.SetFloat("PosX", moveInput.x);
+        anm.SetFloat("PosY", moveInput.y);
+
+
+
     }
+
+    void RotateCamera(float mouseY)
+    {
+        float currentXRotation = characterFollow.localEulerAngles.x > 180f
+            ? characterFollow.localEulerAngles.x - 360f
+            : characterFollow.localEulerAngles.x;
+        float clampedRotationX = Mathf.Clamp(currentXRotation - mouseY, -15f, 15f);
+        characterFollow.localEulerAngles = new Vector3(clampedRotationX, characterFollow.localEulerAngles.y, characterFollow.localEulerAngles.z);
+
+        float currentRotation = aimFollow.localEulerAngles.x > 180f
+            ? aimFollow.localEulerAngles.x - 360f
+            : aimFollow.localEulerAngles.x;
+        float clampedRotation = Mathf.Clamp(currentRotation - mouseY, -15f, 15f);
+        aimFollow.localEulerAngles = new Vector3(clampedRotation, aimFollow.localEulerAngles.y, aimFollow.localEulerAngles.z);
+    }
+
+    private void StartAim()
+    {
+        thirdPersonFollow.Follow=aimFollow;
+        thirdPersonFollow.LookAt = aimFollow;
+    }
+
+    private void StopAim()
+    {
+        thirdPersonFollow.Follow=characterFollow;
+        thirdPersonFollow.LookAt = characterFollow;
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EnemyAttack")) TakeDamage();
+    }
+
 }
