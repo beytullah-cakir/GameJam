@@ -46,7 +46,7 @@ public partial class @SimpleControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""looking"",
+                    ""name"": ""look"",
                     ""type"": ""Value"",
                     ""id"": ""c60e0974-d140-4597-a40e-9862193067e9"",
                     ""expectedControlType"": ""Vector2"",
@@ -140,7 +140,7 @@ public partial class @SimpleControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""looking"",
+                    ""action"": ""look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -151,7 +151,7 @@ public partial class @SimpleControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""ScaleVector2(x=2,y=2)"",
                     ""groups"": """",
-                    ""action"": ""looking"",
+                    ""action"": ""look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -164,7 +164,7 @@ public partial class @SimpleControls: IInputActionCollection2, IDisposable
         m_gameplay = asset.FindActionMap("gameplay", throwIfNotFound: true);
         m_gameplay_fire = m_gameplay.FindAction("fire", throwIfNotFound: true);
         m_gameplay_move = m_gameplay.FindAction("move", throwIfNotFound: true);
-        m_gameplay_look = m_gameplay.FindAction("looking", throwIfNotFound: true);
+        m_gameplay_look = m_gameplay.FindAction("look", throwIfNotFound: true);
     }
 
     ~@SimpleControls()

@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     public CinemachineCamera thirdPersonFollow;
     private PlayerInput inputActions;
     public Transform firePos;
+
+   
+    public bool dusmanMenzil;
+
     public Transform characterFollow, aimFollow;
     public float bulletVelocity = 32;
     public float fireRate = 2;
@@ -30,6 +34,7 @@ public class Player : MonoBehaviour
     private Vector3 mouseWorldPos;
     public bool isAiming;
     public float itemsCount;
+
 
     private void OnEnable()
     {
