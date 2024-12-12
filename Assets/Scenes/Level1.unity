@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 28055182}
   - component: {fileID: 28055181}
   - component: {fileID: 28055180}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 68724450}
   - component: {fileID: 68724449}
   - component: {fileID: 68724448}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1024
   IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 154988905}
   - component: {fileID: 154988904}
   - component: {fileID: 154988903}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ Transform:
   m_GameObject: {fileID: 199425951}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 2, z: -6}
+  m_LocalPosition: {x: 13.83, y: 2, z: 22.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -830,18 +830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &234956596
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1197,18 +1188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &445869207
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1612,7 +1594,7 @@ GameObject:
   - component: {fileID: 698893764}
   - component: {fileID: 698893763}
   - component: {fileID: 698893762}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1720,7 +1702,7 @@ GameObject:
   - component: {fileID: 750319809}
   - component: {fileID: 750319808}
   - component: {fileID: 750319807}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1835,7 +1817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &790805392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1967,7 +1949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &802032779
 Transform:
   m_ObjectHideFlags: 0
@@ -2149,18 +2131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &965820953
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2307,18 +2280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &977818152
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2426,13 +2390,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 994352942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &994352942
 Transform:
   m_ObjectHideFlags: 0
@@ -2507,18 +2471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &1011088463
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2650,18 +2605,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
-  attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  detectionRange: 10
+  attackRange: 5
+  moveSpeed: 7
 --- !u!195 &1080719426
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2787,7 +2733,7 @@ GameObject:
   - component: {fileID: 1111903963}
   - component: {fileID: 1111903962}
   - component: {fileID: 1111903961}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2931,18 +2877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &1166174802
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3517,7 +3454,7 @@ GameObject:
   - component: {fileID: 1575231413}
   - component: {fileID: 1575231412}
   - component: {fileID: 1575231411}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3625,7 +3562,7 @@ GameObject:
   - component: {fileID: 1633172873}
   - component: {fileID: 1633172872}
   - component: {fileID: 1633172871}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3769,18 +3706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &1647498128
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4062,18 +3990,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &1698543703
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4220,18 +4139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &1791306140
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4378,18 +4288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &1856832519
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4500,7 +4401,7 @@ GameObject:
   - component: {fileID: 1869968860}
   - component: {fileID: 1869968859}
   - component: {fileID: 1869968858}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4731,7 +4632,7 @@ Transform:
   m_GameObject: {fileID: 1896146289}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 12.83, y: 1, z: 28.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4789,6 +4690,7 @@ MonoBehaviour:
   mouseSensitivity: 20
   thirdPersonFollow: {fileID: 144228587}
   firePos: {fileID: 2008175717}
+  dusmanMenzil: 0
   characterFollow: {fileID: 2109500317}
   aimFollow: {fileID: 856403588}
   bulletVelocity: 80
@@ -4835,7 +4737,7 @@ GameObject:
   - component: {fileID: 1960341096}
   - component: {fileID: 1960341095}
   - component: {fileID: 1960341094}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4943,7 +4845,7 @@ GameObject:
   - component: {fileID: 1970527949}
   - component: {fileID: 1970527948}
   - component: {fileID: 1970527947}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5051,9 +4953,13 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 619085048221002613, guid: ad563d76b89991242aebf0513082d13e, type: 3}
+      propertyPath: AimCollisionFilter.m_Bits
+      value: 1025
+      objectReference: {fileID: 0}
     - target: {fileID: 1993307562286892838, guid: ad563d76b89991242aebf0513082d13e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 13.83
       objectReference: {fileID: 0}
     - target: {fileID: 1993307562286892838, guid: ad563d76b89991242aebf0513082d13e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5061,7 +4967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1993307562286892838, guid: ad563d76b89991242aebf0513082d13e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6
+      value: 22.48
       objectReference: {fileID: 0}
     - target: {fileID: 1993307562286892838, guid: ad563d76b89991242aebf0513082d13e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5216,18 +5122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a305116cfa1484f96ee35004b85248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  health: 100
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  attackRate: 5
-  projectile: {fileID: 4115758733699382253, guid: ee4b26df3189b494785b321a8743099a, type: 3}
-  sightRange: 6
+  detectionRange: 40
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  moveSpeed: 7
 --- !u!195 &2061184351
 NavMeshAgent:
   m_ObjectHideFlags: 0
