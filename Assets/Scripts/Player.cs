@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     CharacterController characterController;
     public Transform firePos;
     public float bulletVelocity = 15;
+    //
+    public bool dusmanMenzil;
 
     private void OnEnable()
     {
