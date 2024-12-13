@@ -1010,6 +1010,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Levels"",
+            ""id"": ""63e87c99-4e9b-4465-9e18-f4c345f1ba39"",
+            ""actions"": [
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7de4c50-8e5b-4a77-9561-a89ad2fc6582"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""874e8de1-08f8-415e-8294-47080d1fa251"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1099,12 +1127,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Levels
+        m_Levels = asset.FindActionMap("Levels", throwIfNotFound: true);
+        m_Levels_Click = m_Levels.FindAction("Click", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInput.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerInput.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Levels.enabled, "This will cause a leak and performance issues, PlayerInput.Levels.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -1398,6 +1430,52 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Levels
+    private readonly InputActionMap m_Levels;
+    private List<ILevelsActions> m_LevelsActionsCallbackInterfaces = new List<ILevelsActions>();
+    private readonly InputAction m_Levels_Click;
+    public struct LevelsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public LevelsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Click => m_Wrapper.m_Levels_Click;
+        public InputActionMap Get() { return m_Wrapper.m_Levels; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(LevelsActions set) { return set.Get(); }
+        public void AddCallbacks(ILevelsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_LevelsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_LevelsActionsCallbackInterfaces.Add(instance);
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
+        }
+
+        private void UnregisterCallbacks(ILevelsActions instance)
+        {
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
+        }
+
+        public void RemoveCallbacks(ILevelsActions instance)
+        {
+            if (m_Wrapper.m_LevelsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ILevelsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_LevelsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_LevelsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public LevelsActions @Levels => new LevelsActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1468,5 +1546,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnScrollWheel(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface ILevelsActions
+    {
+        void OnClick(InputAction.CallbackContext context);
     }
 }

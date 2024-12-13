@@ -23,10 +23,6 @@ public class Player : MonoBehaviour
     public CinemachineCamera thirdPersonFollow;
     private PlayerInput inputActions;
     public Transform firePos;
-
-   
-    public bool dusmanMenzil;
-
     public Transform characterFollow, aimFollow;
     public float bulletVelocity = 32;
     public float fireRate = 2;
@@ -87,11 +83,13 @@ public class Player : MonoBehaviour
         {
             thirdPersonFollow.Follow = aimFollow;
             thirdPersonFollow.LookAt = aimFollow;
+            thirdPersonFollow.GetComponent<CinemachineThirdPersonFollow>().CameraDistance = 1f;
         }
         else
         {
             thirdPersonFollow.Follow = characterFollow;
             thirdPersonFollow.LookAt = characterFollow;
+            thirdPersonFollow.GetComponent<CinemachineThirdPersonFollow>().CameraDistance = 4f;
         }
     }
 
@@ -155,13 +153,13 @@ public class Player : MonoBehaviour
         float currentXRotation = characterFollow.localEulerAngles.x > 180f
             ? characterFollow.localEulerAngles.x - 360f
             : characterFollow.localEulerAngles.x;
-        float clampedRotationX = Mathf.Clamp(currentXRotation - mouseY, -15f, 15f);
+        float clampedRotationX = Mathf.Clamp(currentXRotation - mouseY, -60f, 60f);
         characterFollow.localEulerAngles = new Vector3(clampedRotationX, characterFollow.localEulerAngles.y, characterFollow.localEulerAngles.z);
 
         float currentRotation = aimFollow.localEulerAngles.x > 180f
             ? aimFollow.localEulerAngles.x - 360f
             : aimFollow.localEulerAngles.x;
-        float clampedRotation = Mathf.Clamp(currentRotation - mouseY, -15f, 15f);
+        float clampedRotation = Mathf.Clamp(currentRotation - mouseY, -60f, 60f);
         aimFollow.localEulerAngles = new Vector3(clampedRotation, aimFollow.localEulerAngles.y, aimFollow.localEulerAngles.z);
     }
 

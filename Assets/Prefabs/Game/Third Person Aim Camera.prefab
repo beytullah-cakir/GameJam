@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3260469928667014233}
   - component: {fileID: 5602492661104181005}
   - component: {fileID: 619085048221002613}
+  - component: {fileID: 4180397831599895127}
   m_Layer: 0
   m_Name: Third Person Aim Camera
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4545540537187710632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalPosition: {x: 12.83, y: 1, z: 24.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54,7 +55,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 7932004052026072083, guid: 1f8d6619988399f45b5cfaa2242a512d, type: 3}
+    TrackingTarget: {fileID: 6659052109588819476, guid: b04d5c8f106c50d45ac7a6a971ecc7be, type: 3}
     LookAtTarget: {fileID: 7932004052026072083, guid: 1f8d6619988399f45b5cfaa2242a512d, type: 3}
     CustomLookAtTarget: 1
   Lens:
@@ -119,5 +120,44 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   IgnoreTag: 
-  AimDistance: 200
+  AimDistance: 1
   NoiseCancellation: 1
+--- !u!114 &4180397831599895127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545540537187710632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1024
+  IgnoreTag: 
+  TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MinimumDistanceFromTarget: 0.3
+  AvoidObstacles:
+    Enabled: 1
+    DistanceLimit: 0
+    MinimumOcclusionTime: 0
+    CameraRadius: 0.4
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Strategy: 0
+    MaximumEffort: 4
+    SmoothingTime: 0
+    Damping: 0.4
+    DampingWhenOccluded: 0.2
+  ShotQualityEvaluation:
+    Enabled: 0
+    OptimalDistance: 10
+    NearLimit: 5
+    FarLimit: 30
+    MaxQualityBoost: 0.2

@@ -988,6 +988,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Levels",
+            "id": "63e87c99-4e9b-4465-9e18-f4c345f1ba39",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "e7de4c50-8e5b-4a77-9561-a89ad2fc6582",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "874e8de1-08f8-415e-8294-47080d1fa251",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
