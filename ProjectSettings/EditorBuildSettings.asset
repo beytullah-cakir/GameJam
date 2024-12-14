@@ -5,15 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level1.unity
     guid: f54befac797020247996039a9eee1b7c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level2.unity
     guid: 283671ea8b6c20649ade156809f6bc9e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level3.unity
     guid: 11133d4c168b81b40859a6888acd8998
+  - enabled: 1
+    path: Assets/Scenes/Beytullah.unity
+    guid: 655f46a061f788549a378ec91a2f2db1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 35f29d18da469df4a8897f536b00c3d3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
@@ -144,8 +145,8 @@ public class Player : MonoBehaviour
         RotateCamera(mouseY);
         transform.Rotate(Vector3.up * mouseX);
         transform.position += moveDirection * speed * Time.deltaTime;
-        anm.SetFloat("PosX", moveInput.x);
-        anm.SetFloat("PosY", moveInput.y);
+        anm.SetFloat("MoveX", moveInput.x);
+        anm.SetFloat("MoveY", moveInput.y);
     }
 
     void RotateCamera(float mouseY)
