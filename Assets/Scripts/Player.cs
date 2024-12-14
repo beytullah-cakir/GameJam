@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     private Vector3 mouseWorldPos;
     public bool isAiming;
     public float itemsCount;
+    public float aimDistance=2, followDistance=4;
 
 
     private void OnEnable()
@@ -84,13 +85,13 @@ public class Player : MonoBehaviour
         {
             thirdPersonFollow.Follow = aimFollow;
             thirdPersonFollow.LookAt = aimFollow;
-            thirdPersonFollow.GetComponent<CinemachineThirdPersonFollow>().CameraDistance = 1f;
+            thirdPersonFollow.GetComponent<CinemachineThirdPersonFollow>().CameraDistance = aimDistance;
         }
         else
         {
             thirdPersonFollow.Follow = characterFollow;
             thirdPersonFollow.LookAt = characterFollow;
-            thirdPersonFollow.GetComponent<CinemachineThirdPersonFollow>().CameraDistance = 4f;
+            thirdPersonFollow.GetComponent<CinemachineThirdPersonFollow>().CameraDistance = followDistance;
         }
     }
 

@@ -3,7 +3,12 @@ guid: c23162a8cbb5cf1489d35100b7a8a0b9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kumm
+    second: {fileID: 2100000, guid: fab00fa83a8acd849b3b1c736841a0c5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

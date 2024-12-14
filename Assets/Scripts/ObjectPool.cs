@@ -20,7 +20,7 @@ public class ObjectPool : MonoBehaviour
     {
         for(int i=0;i<bulletAmount; i++)
         {
-            GameObject _bullet=Instantiate(bullet);
+            GameObject _bullet=Instantiate(bullet,transform);
             _bullet.SetActive(false);
             bullets.Add(_bullet);
         }
