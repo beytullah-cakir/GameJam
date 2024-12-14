@@ -13,11 +13,6 @@ public class Enemies : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    
-
-    
-   
-
 
 void Start()
     {
