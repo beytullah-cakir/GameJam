@@ -44,7 +44,6 @@ public class Enemies : MonoBehaviour
     }
 
 
-
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
