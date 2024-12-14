@@ -5,7 +5,7 @@ public class Enemies : MonoBehaviour
 {
     Transform player; // Oyuncunun Transform'u
     public float detectionRange = 40f; // Algýlama menzili
-    public float attackRange = 2f; // Saldýrý menzili
+    public float attackRange = 20f; // Saldýrý menzili
     public float moveSpeed = 7f; // Hareket hýzý
     private NavMeshAgent agent;
     protected virtual void Awake()
@@ -24,7 +24,7 @@ void Start()
         
         agent.speed = moveSpeed; // Hýzý ayarla
 
-        player = GameObject.FindWithTag("PLayer").GetComponent<Transform>();
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
        
     }
 
