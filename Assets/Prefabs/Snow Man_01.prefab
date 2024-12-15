@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 5099574507288305206}
   - component: {fileID: 6578899550956428574}
   - component: {fileID: 3417528672454953574}
+  - component: {fileID: 6902884404809786037}
   m_Layer: 14
   m_Name: Snow Man_01
   m_TagString: Untagged
@@ -304,14 +305,35 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   health: 100
-  sightRange: 8
-  attackRange: 5
+  sightRange: 12
+  attackRange: 6
   attackRate: 0
   playerInSightRange: 0
   playerInAttackRange: 0
   deathAnimationTime: 0
   ice: {fileID: 5331735495089094581, guid: cab9c56d1714fa5428ec7a1b1a448c4e, type: 3}
   iceVelocity: 50
+--- !u!65 &6902884404809786037
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665448684949034829}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 10, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4061901886764215230
 GameObject:
   m_ObjectHideFlags: 0

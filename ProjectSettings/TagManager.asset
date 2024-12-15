@@ -9,6 +9,7 @@ TagManager:
   - Take
   - PowerItem
   - Chest
+  - Ice
   layers:
   - Default
   - TransparentFX

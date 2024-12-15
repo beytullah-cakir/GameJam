@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
     private Transform playerCamera;
-    private float xRotation = 0f;
+    private readonly float xRotation = 0f;
     private Animator anm;
     private CharacterController characterController;
     public CinemachineCamera thirdPersonFollow;
@@ -28,9 +28,9 @@ public class Player : MonoBehaviour
     public LayerMask aimColliderLayerMask, takeableObjects;
     private Vector3 mouseWorldPos;
     public bool isAiming;
-    public bool isSprinting; // Sprint kontrolü
-    public float itemsCount;
+    public bool isSprinting;
     public float aimDistance = 2, followDistance = 4;
+    public bool isDead;
 
     private void OnEnable()
     {
@@ -80,15 +80,20 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
-        currentHealth -= 10;
-        healthBar.value = currentHealth / maxHealth;
-        if (currentHealth <= 0) Death();
+        if (!isDead)
+        {
+            currentHealth -= 10;
+            healthBar.value = currentHealth / maxHealth;
+            if (currentHealth <= 0) Death();
+        }
+
     }
 
     public void Death()
     {
+        isDead = true;
         currentHealth = 0;
-        Time.timeScale = 0;
+        GameManager.Instance.GameOver();
     }
 
     public void AimControl()
@@ -142,7 +147,7 @@ public class Player : MonoBehaviour
         lookInput = inputActions.Player.Look.ReadValue<Vector2>();
         Vector2 screen = new Vector2(Screen.width / 2, Screen.height / 2);
         Ray ray = Camera.main.ScreenPointToRay(screen);
-        if (Physics.Raycast(ray, out RaycastHit hit, 999f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 999f, aimColliderLayerMask))
         {
             mouseWorldPos = hit.point;
         }
@@ -180,7 +185,13 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyAttack")) TakeDamage();
+        if (other.CompareTag("Ice")) TakeDamage();
+    }
+
+
+    private void IncreaseHealth()
+    {
+        currentHealth += 10;
     }
 
     public void InteractObject()
@@ -192,23 +203,23 @@ public class Player : MonoBehaviour
             switch (hit.collider.tag)
             {
 
-                case "PowerItem":
+                case "Heal":
                     Destroy(hit.collider.gameObject);
-                    itemsCount++;
-                    GameManager.Instance.IncreaseAmount();
+                    IncreaseHealth();
                     break;
 
                 case "Chest":
-                    print("chest");
-                    Animator anm=hit.collider.GetComponent<Animator>();
+                    Animator anm = hit.collider.GetComponent<Animator>();
                     anm.SetTrigger("Open");
                     break;
 
                 case "Bullet":
-                    print("mermi artacak");
+                    GameManager.Instance.IncreaseAmount();
                     break;
 
-                
+                    
+
+
             }
 
         }

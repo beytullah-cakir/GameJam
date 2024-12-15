@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float totalBullet;
+    public float currentBullet;
+    public float increaseBullet;
     void Start()
     {
         
@@ -12,5 +14,16 @@ public class Weapons : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    public void ReduceBUllet()
+    {
+        currentBullet--;
+    }
+
+    public void IncreaseBullet()
+    {
+        totalBullet+=increaseBullet;
     }
 }

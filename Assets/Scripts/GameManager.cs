@@ -11,11 +11,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public Player Player;
 
+    [SerializeField]
+    public Weapons Weapons;
 
 
 
-
-
+    private Weapons _weapons;
 
     private UIManager _uiManager;
 
@@ -26,8 +27,6 @@ public class GameManager : MonoBehaviour
     public float maxAmount = 50;
     public float reduceRate = 1f;
     public float increaseAmount=10;
-    public TextMeshProUGUI itemsCount;
-
 
     public static GameManager Instance;
 
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         _player = Player;
         _uiManager = UIManager;
+        _weapons = Weapons;
         Instance = this;
         amount = maxAmount;
     }
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        itemsCount.text = $"{Player.itemsCount}";
+        
     }
 
     public Transform RandomPoints()
@@ -79,6 +79,16 @@ public class GameManager : MonoBehaviour
     {
         amount += increaseAmount;
         if(amount>maxAmount) amount = maxAmount;
+    }
+
+
+    public void GameOver()
+    {
+        if(_uiManager.surviveSlider.value<=0 || _player.isDead)
+        {
+            Time.timeScale = 0;
+            print("You Died");
+        }
     }
 
 }
