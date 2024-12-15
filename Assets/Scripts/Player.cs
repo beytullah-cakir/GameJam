@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
         lookInput = inputActions.Player.Look.ReadValue<Vector2>();
         Vector2 screen = new Vector2(Screen.width / 2, Screen.height / 2);
         Ray ray = Camera.main.ScreenPointToRay(screen);
-        if (Physics.Raycast(ray, out RaycastHit hit, 999f, aimColliderLayerMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 999f))
         {
             mouseWorldPos = hit.point;
         }
