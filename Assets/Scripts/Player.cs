@@ -1,9 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +11,7 @@ public class Player : MonoBehaviour
     #endregion
 
     public float speed = 5f;
+    public float sprintSpeed = 8f; // Sprint sýrasýnda artýrýlacak hýz
     public float mouseSensitivity = 100f;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -30,9 +28,9 @@ public class Player : MonoBehaviour
     public LayerMask aimColliderLayerMask, takeableObjects;
     private Vector3 mouseWorldPos;
     public bool isAiming;
+    public bool isSprinting; // Sprint kontrolü
     public float itemsCount;
-    public float aimDistance=2, followDistance=4;
-
+    public float aimDistance = 2, followDistance = 4;
 
     private void OnEnable()
     {
@@ -41,6 +39,8 @@ public class Player : MonoBehaviour
         inputActions.Player.Attack.canceled += ctx => StopFire();
         inputActions.Player.Aim.performed += ctx => AimControl();
         inputActions.Player.Interact.started += ctx => InteractObject();
+        inputActions.Player.Sprint.performed += ctx => StartSprint(); // Shift basýlý tutulduðunda hýz artar
+        inputActions.Player.Sprint.canceled += ctx => StopSprint();  // Shift býrakýldýðýnda hýz normale döner
     }
 
     private void OnDisable()
@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
         inputActions.Player.Attack.canceled -= ctx => StopFire();
         inputActions.Player.Aim.performed -= ctx => AimControl();
         inputActions.Player.Interact.started -= ctx => InteractObject();
+        inputActions.Player.Sprint.performed -= ctx => StartSprint();
+        inputActions.Player.Sprint.canceled -= ctx => StopSprint();
     }
 
     private void Awake()
@@ -62,6 +64,18 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void StartSprint()
+    {
+        isSprinting = true;
+        speed = sprintSpeed; // Hýzý artýr
+    }
+
+    private void StopSprint()
+    {
+        isSprinting = false;
+        speed = 5f; // Hýzý eski haline getir
     }
 
     public void TakeDamage()
@@ -133,7 +147,6 @@ public class Player : MonoBehaviour
             mouseWorldPos = hit.point;
         }
     }
-
     public void HandleMovement()
     {
         Vector3 moveDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
@@ -175,7 +188,7 @@ public class Player : MonoBehaviour
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, 999f))
         {
-            
+
             switch (hit.collider.tag)
             {
 
@@ -184,8 +197,20 @@ public class Player : MonoBehaviour
                     itemsCount++;
                     GameManager.Instance.IncreaseAmount();
                     break;
+
+                case "Chest":
+                    print("chest");
+                    Animator anm=hit.collider.GetComponent<Animator>();
+                    anm.SetTrigger("Open");
+                    break;
+
+                case "Bullet":
+                    print("mermi artacak");
+                    break;
+
+                
             }
-            
+
         }
     }
 }

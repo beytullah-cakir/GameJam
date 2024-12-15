@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Take
   - PowerItem
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Level
   - Plane
   - Enemy
-  - 
+  - Ice
   - 
   - 
   - 

@@ -1,140 +1,95 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemies : MonoBehaviour
 {
-
-
-    private NavMeshAgent agent;
-
-    private Transform player;
-
+    protected NavMeshAgent agent;
+    protected Transform player;
     public LayerMask whatIsPlayer;
 
     public float health;
-
-    public Vector3 walkPoint;
-
-    bool walkPointSet;
-
-    public float walkPointRange;
-
-    public float attackRate;
-
+    protected bool walkPointSet;
     public float sightRange, attackRange;
+    public  float attackRate;
 
     public bool playerInSightRange, playerInAttackRange;
 
-    private Animator anm;
-
-    private float currentSpeed;
+    protected Animator anm;
+    protected float currentSpeed;
 
     public float deathAnimationTime;
 
-    private bool isDead,isAttacking;
-
-    
-
-
-
+    protected bool isDead, isAttacking;
+    Vector3 walkPoint;
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
     }
 
-
-    void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         anm = GetComponent<Animator>();
         currentSpeed = agent.speed;
-
     }
 
     protected virtual void Update()
     {
-        // Oyuncunun menzil içinde olup olmadýðýný kontrol et
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        // Durum kontrolü
-        if (!playerInSightRange && !playerInAttackRange && !isAttacking && !isDead)
-        {
+
+
+        if (!playerInSightRange && !playerInAttackRange && !isDead)
             Patroling();
-        }
-        else if (playerInSightRange && !playerInAttackRange && !isAttacking && !isDead)
-        {
+
+        if (playerInSightRange && !playerInAttackRange && !isDead)
             ChasePlayer();
-        }
-        else if (playerInAttackRange && playerInSightRange && !isAttacking && !isDead)
+
+        if (playerInAttackRange && !isDead)
         {
+            RotateTowardsPlayer();
             StartCoroutine(AttackPlayer());
         }
-
-        anm.SetBool("Walk", agent.speed > 0);
+            
     }
 
 
-    private IEnumerator AttackPlayer()
-    {
-        // Oyuncuya dön
-        RotateTowardsPlayer();
 
-        isAttacking = true;
-        anm.SetTrigger("Attack");
-
-        // Saldýrý süresince bekleme
-        yield return new WaitForSeconds(attackRate);
-        isAttacking = false;
-        agent.speed = 0;
-    }
-
-
-    private void RotateTowardsPlayer()
+    protected void RotateTowardsPlayer()
     {
         Vector3 direction = (player.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); // Dönüþ hýzýný ayarlayýn
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 20f);
     }
 
-    private void Patroling()
+    protected void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
+        
+        if (!walkPointSet)
+        {
+            walkPoint = GameManager.Instance.RandomPoints().position;
             agent.SetDestination(walkPoint);
+            walkPointSet = true;
+        }
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (walkPointSet && agent.remainingDistance < 0.1f)
+        {
             walkPointSet = false;
-
-        agent.speed = currentSpeed;
-
-        
+        }
 
     }
-
-    private void SearchWalkPoint()
+    protected void ChasePlayer()
     {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        walkPointSet = true;
-
-
-    }
-
-    private void ChasePlayer()
-    {
+        RotateTowardsPlayer();
         agent.SetDestination(player.position);
-        agent.speed = currentSpeed;
-        
+        agent.isStopped = false;
     }
 
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
@@ -142,11 +97,11 @@ public class Enemies : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 
-    public void TakeDamage(float damage)
+    protected void TakeDamage(float damage)
     {
-        if (isDead) return; // Zaten ölmüþse iþlemi sonlandýr
+        if (isDead) return;
 
-        health -= damage;
+        health = Mathf.Max(health - damage, 0);
 
         if (health <= 0 && !isDead)
         {
@@ -154,48 +109,27 @@ public class Enemies : MonoBehaviour
         }
     }
 
-    private void Die()
+    protected void Die()
     {
         isDead = true;
-
-        // NavMeshAgent'i devre dýþý býrak
-        agent.enabled = false;
-
-        // Animasyon oynat
         anm.SetTrigger("Die");
+        agent.isStopped = true;
+        agent.enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
 
-        // Rigidbody veya Collider ile fiziksel düþüþü saðla
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = false; // Rigidbody'nin fizik simülasyonuna dahil olmasýný saðlar
-        }
-
-        // Collider'larý devre dýþý býrak
-        Collider[] colliders = GetComponents<Collider>();
-        foreach (var col in colliders)
-        {
-            col.enabled = false; // Çarpýþmayý durdurur
-        }
-
-        // Belirli bir süre sonra düþmaný yok et
         Destroy(gameObject, deathAnimationTime);
     }
 
-
-
-
-
-
-
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bullet")) TakeDamage(10);
     }
 
-
-
-
-
-
+    protected virtual IEnumerator AttackPlayer()
+    {
+        if (isAttacking) yield break;
+        isAttacking = true;
+        agent.isStopped = true;
+        RotateTowardsPlayer();
+    }
 }

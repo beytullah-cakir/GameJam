@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    public Transform[] points;
+    public Transform randomPoint;
+
 
 
 
@@ -52,6 +55,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         itemsCount.text = $"{Player.itemsCount}";
+    }
+
+    public Transform RandomPoints()
+    {
+        int random=Random.Range(0, points.Length);
+        return points[random];
     }
 
 
