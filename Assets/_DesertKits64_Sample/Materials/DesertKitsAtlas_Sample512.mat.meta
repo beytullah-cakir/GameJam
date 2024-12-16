@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8e6c8d4e4f05fe44b8c2d2b569a5d1bb
+timeCreated: 1487436921
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86482
+  packageName: Desert Kits 64 Sample
+  packageVersion: 1.0
+  assetPath: Assets/_DesertKits64_Sample/Materials/DesertKitsAtlas_Sample512.mat
+  uploadId: 169830

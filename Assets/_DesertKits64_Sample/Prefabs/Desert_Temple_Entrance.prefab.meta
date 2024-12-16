@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2f11a19ee587ed44ca4a72f6d3986f99
+timeCreated: 1487437322
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86482
+  packageName: Desert Kits 64 Sample
+  packageVersion: 1.0
+  assetPath: Assets/_DesertKits64_Sample/Prefabs/Desert_Temple_Entrance.prefab
+  uploadId: 169830

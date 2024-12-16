@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f159a1b75fe800545869a115d68acdcd
+timeCreated: 1487437250
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86482
+  packageName: Desert Kits 64 Sample
+  packageVersion: 1.0
+  assetPath: Assets/_DesertKits64_Sample/Prefabs/Ram_Sharp.prefab
+  uploadId: 169830

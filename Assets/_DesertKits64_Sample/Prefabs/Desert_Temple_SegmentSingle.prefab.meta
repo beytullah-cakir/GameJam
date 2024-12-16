@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b667959c85aac0840abd65af9a3e1517
+timeCreated: 1487437287
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86482
+  packageName: Desert Kits 64 Sample
+  packageVersion: 1.0
+  assetPath: Assets/_DesertKits64_Sample/Prefabs/Desert_Temple_SegmentSingle.prefab
+  uploadId: 169830

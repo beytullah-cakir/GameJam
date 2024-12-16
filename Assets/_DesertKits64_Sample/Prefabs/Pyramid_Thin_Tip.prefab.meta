@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ab440feedacbd0d40aaac5abd4acd8fd
+timeCreated: 1487437346
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86482
+  packageName: Desert Kits 64 Sample
+  packageVersion: 1.0
+  assetPath: Assets/_DesertKits64_Sample/Prefabs/Pyramid_Thin_Tip.prefab
+  uploadId: 169830
