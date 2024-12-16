@@ -32,19 +32,19 @@ public class GameManager : MonoBehaviour
 
     public Transform[] points;
     public Transform randomPoint;
-
+    public GameObject pauseMenu, gameOverMenu,youWinMenu;
     PlayerInput input;
 
     private void OnEnable()
     {
         input.Enable();
-        input.Levels.Esc.performed += ctx => BackToLevelMenu();
+        input.Levels.Esc.performed +=ctx=> PauseGame();
     }
 
     private void OnDisable()
     {
         input.Disable();
-        input.Levels.Esc.performed -= ctx => BackToLevelMenu();
+        input.Levels.Esc.performed -= ctx => PauseGame();
     }
 
 
@@ -58,15 +58,15 @@ public class GameManager : MonoBehaviour
         _weapons = Weapons;
         Instance = this;
         amount = maxAmount;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Time.timeScale = 1;
+        
         input= new PlayerInput();
     }
 
     private void Start()
     {
         StartCoroutine(ReduceAmount());
+        
     }
 
 
@@ -102,12 +102,17 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if(_uiManager.surviveSlider.value<=0 || _player.isDead)
+        if(amount<=0 || _player.isDead)
         {
             Time.timeScale = 0;
-            print("You Died");
+            gameOverMenu.SetActive(true);
+            youWinMenu.SetActive(false);
+            pauseMenu.SetActive(true);
         }
     }
+
+
+    
 
 
     public void StartGame(string sceneName)
@@ -116,9 +121,32 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void BackToLevelMenu()
+    public void QuitGame()
     {
-        SceneManager.LoadScene("LevelsMenu");
+        Application.Quit();
+    }
+
+
+    public void PauseGame()
+    {
+        gameOverMenu.SetActive(false);
+        youWinMenu.SetActive(false);
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ResumeMenu()
+    {
+        gameOverMenu.SetActive(false);
+        youWinMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+
+    public void NextLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
     }
 
 }

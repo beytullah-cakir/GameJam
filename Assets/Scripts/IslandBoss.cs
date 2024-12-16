@@ -21,9 +21,11 @@ public class IslandBoss : Enemies
 
     protected  override IEnumerator  AttackPlayer()
     {
-        base.AttackPlayer();
+        if (isAttacking) yield break;
+        isAttacking = true;
+        agent.isStopped = true;
+        RotateTowardsPlayer();
         anm.SetTrigger("Attack");
-
         yield return new WaitForSeconds(attackRate);
         isAttacking = false;
         agent.isStopped = false;

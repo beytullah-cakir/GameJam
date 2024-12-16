@@ -127,9 +127,10 @@ public class Player : MonoBehaviour
     private void Fire()
     {
         GameObject bullet = ObjectPool.instance.GetBullet();
+        GameManager.Instance.Weapons.ReduceBUllet();
         Vector3 aimDir = (mouseWorldPos - firePos.position).normalized;
 
-        if (bullet != null)
+        if (bullet != null && GameManager.Instance.Weapons.totalBullet>=0)
         {
             bullet.transform.position = firePos.position;
             bullet.transform.rotation = Quaternion.LookRotation(aimDir, Vector3.up);
@@ -186,6 +187,8 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ice")) TakeDamage();
+
+        if (other.CompareTag("Exit")) GameManager.Instance.NextLevel("Level2");
     }
 
 
@@ -216,6 +219,14 @@ public class Player : MonoBehaviour
                 case "BulletItem":
                     Destroy(hit.collider.gameObject);
                     GameManager.Instance.IncreaseAmount();
+                    break;
+
+                case "Water":
+                    Destroy(hit.collider.gameObject);
+                    GameManager.Instance.amount += 10;
+                    break;
+                case "GameOver":
+                    GameManager.Instance.GameOver();
                     break;
 
                     

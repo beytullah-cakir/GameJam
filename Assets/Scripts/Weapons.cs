@@ -3,7 +3,6 @@ using UnityEngine;
 public class Weapons : MonoBehaviour
 {
     public int totalBullet;
-    public int currentBullet;
     public int increaseBullet;
     void Start()
     {
@@ -20,8 +19,9 @@ public class Weapons : MonoBehaviour
 
     public void ReduceBUllet()
     {
-        currentBullet--;
-        PlayerPrefs.SetInt("Bullet", currentBullet);
+        totalBullet--;
+        if(totalBullet <= 0) totalBullet = 0;
+        PlayerPrefs.SetInt("Bullet", totalBullet);
     }
 
     public void IncreaseBullet()

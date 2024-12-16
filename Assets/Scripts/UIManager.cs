@@ -1,10 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject aimCursor, normalCursor;
     public Slider surviveSlider;
+    public TextMeshProUGUI bulletCount;
     
     void Start()
     {
@@ -15,9 +16,13 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdateSurviveSlider();
+        bulletCount.text = GameManager.Instance.Weapons.totalBullet.ToString();
     }
     void UpdateSurviveSlider()
     {
         surviveSlider.value = GameManager.Instance.amount/GameManager.Instance.maxAmount;
     }
+
+
+
 }

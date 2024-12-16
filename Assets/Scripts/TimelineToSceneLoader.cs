@@ -10,6 +10,7 @@ public class TimelineToSceneLoader : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale= 1.0f;
         if (PlayerPrefs.GetInt(TimelinePlayedKey) == 1)
         {
             Destroy(timelineDirector.gameObject);
