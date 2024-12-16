@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 847ad21e052823640b649f294605afb2
+timeCreated: 1487437349
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86482
+  packageName: Desert Kits 64 Sample
+  packageVersion: 1.0
+  assetPath: Assets/_DesertKits64_Sample/Prefabs/Pyramid_Thin_Base.prefab
+  uploadId: 169830

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3f77420e3ad8b0e46afcc1d8a07e9a9e
+timeCreated: 1487437572
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86482
+  packageName: Desert Kits 64 Sample
+  packageVersion: 1.0
+  assetPath: Assets/_DesertKits64_Sample/Prefabs/Boulder_Medium.prefab
+  uploadId: 169830

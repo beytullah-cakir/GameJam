@@ -62,7 +62,11 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+
   m_RenderingLayerMask: 1
+
+  m_RenderingLayerMask: 254
+
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e0f662564462ce74dafe9b3aa4c7a111, type: 2}
@@ -147,8 +151,13 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+
   m_SourcePrefab: {fileID: 100100000, guid: 6f7c665fe0603c242bf5be345b641117, type: 3}
 --- !u!4 &3101425473209127914 stripped
+
+  m_SourcePrefab: {fileID: 100100000, guid: 84221c5d9e2cf0b488ddb37026596b45, type: 3}
+--- !u!4 &3525029356859335721 stripped
+
 Transform:
   m_CorrespondingSourceObject: {fileID: 5773399876510048669, guid: 6f7c665fe0603c242bf5be345b641117, type: 3}
   m_PrefabInstance: {fileID: 8869072627517370999}

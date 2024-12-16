@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ce2146ce387403f49849aab35d406dbd
+timeCreated: 1487437423
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 86482
+  packageName: Desert Kits 64 Sample
+  packageVersion: 1.0
+  assetPath: Assets/_DesertKits64_Sample/Prefabs/Desert_Column_Single.prefab
+  uploadId: 169830
