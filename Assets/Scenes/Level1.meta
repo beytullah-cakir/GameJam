@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scenes/Level1.meta
-guid: e1e600f4ffe885942826cee46249f739
-========
-guid: 7cdab5603d7bb934c801f4e7d4e16bfa
->>>>>>>> ec06534e8b145bed97a9c1182fdd9eea4022e235:Assets/Scenes/LevelsMenu.meta
+guid: 11133d4c168b81b40859a6888acd8998
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

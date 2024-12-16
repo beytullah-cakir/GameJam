@@ -14,17 +14,8 @@ public class UIManager : MonoBehaviour
     
     void Update()
     {
-        ManageCursor();
         UpdateSurviveSlider();
     }
-
-    public void ManageCursor()
-    {
-        aimCursor.SetActive(GameManager.Instance.Player.isAiming);
-        normalCursor.SetActive(!GameManager.Instance.Player.isAiming);
-    }
-
-
     void UpdateSurviveSlider()
     {
         surviveSlider.value = GameManager.Instance.amount/GameManager.Instance.maxAmount;

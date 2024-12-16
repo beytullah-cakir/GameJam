@@ -1,7 +1,7 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -89,6 +89,12 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             print("You Died");
         }
+    }
+
+
+    public void StartGame(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
 }
