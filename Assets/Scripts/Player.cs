@@ -213,7 +213,8 @@ public class Player : MonoBehaviour
                     anm.SetTrigger("Open");
                     break;
 
-                case "Bullet":
+                case "BulletItem":
+                    Destroy(hit.collider.gameObject);
                     GameManager.Instance.IncreaseAmount();
                     break;
 

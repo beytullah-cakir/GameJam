@@ -10,10 +10,10 @@ public class TimelineToSceneLoader : MonoBehaviour
 
     void Start()
     {
-       
-        if (PlayerPrefs.GetInt(TimelinePlayedKey, 0) == 1)
+        if (PlayerPrefs.GetInt(TimelinePlayedKey) == 1)
         {
-            Destroy(timelineDirector.gameObject); 
+            Destroy(timelineDirector.gameObject);
+            LoadNextScene();
             return;
         }
        

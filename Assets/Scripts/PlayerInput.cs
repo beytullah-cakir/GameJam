@@ -1023,6 +1023,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1c64085-2c58-49be-925f-9d9c8dd1f554"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1034,6 +1043,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52c09f87-18d7-4f9a-83ee-0f441023f18a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1130,6 +1150,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Levels
         m_Levels = asset.FindActionMap("Levels", throwIfNotFound: true);
         m_Levels_Click = m_Levels.FindAction("Click", throwIfNotFound: true);
+        m_Levels_Esc = m_Levels.FindAction("Esc", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -1435,11 +1456,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Levels;
     private List<ILevelsActions> m_LevelsActionsCallbackInterfaces = new List<ILevelsActions>();
     private readonly InputAction m_Levels_Click;
+    private readonly InputAction m_Levels_Esc;
     public struct LevelsActions
     {
         private @PlayerInput m_Wrapper;
         public LevelsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Click => m_Wrapper.m_Levels_Click;
+        public InputAction @Esc => m_Wrapper.m_Levels_Esc;
         public InputActionMap Get() { return m_Wrapper.m_Levels; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1452,6 +1475,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Click.started += instance.OnClick;
             @Click.performed += instance.OnClick;
             @Click.canceled += instance.OnClick;
+            @Esc.started += instance.OnEsc;
+            @Esc.performed += instance.OnEsc;
+            @Esc.canceled += instance.OnEsc;
         }
 
         private void UnregisterCallbacks(ILevelsActions instance)
@@ -1459,6 +1485,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Click.started -= instance.OnClick;
             @Click.performed -= instance.OnClick;
             @Click.canceled -= instance.OnClick;
+            @Esc.started -= instance.OnEsc;
+            @Esc.performed -= instance.OnEsc;
+            @Esc.canceled -= instance.OnEsc;
         }
 
         public void RemoveCallbacks(ILevelsActions instance)
@@ -1550,5 +1579,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface ILevelsActions
     {
         void OnClick(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }

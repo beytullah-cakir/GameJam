@@ -10,6 +10,8 @@ TagManager:
   - PowerItem
   - Chest
   - Ice
+  - Heal
+  - BulletItem
   layers:
   - Default
   - TransparentFX

@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
-    public float totalBullet;
-    public float currentBullet;
-    public float increaseBullet;
+    public int totalBullet;
+    public int currentBullet;
+    public int increaseBullet;
     void Start()
     {
-        
+        PlayerPrefs.GetInt("TotalBullet");
+        PlayerPrefs.GetInt("Bullet");
     }
 
     // Update is called once per frame
@@ -20,10 +21,12 @@ public class Weapons : MonoBehaviour
     public void ReduceBUllet()
     {
         currentBullet--;
+        PlayerPrefs.SetInt("Bullet", currentBullet);
     }
 
     public void IncreaseBullet()
     {
         totalBullet+=increaseBullet;
+        PlayerPrefs.SetInt("TotalBullet", totalBullet);
     }
 }

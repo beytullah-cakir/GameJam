@@ -33,6 +33,20 @@ public class GameManager : MonoBehaviour
     public Transform[] points;
     public Transform randomPoint;
 
+    PlayerInput input;
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Levels.Esc.performed += ctx => BackToLevelMenu();
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+        input.Levels.Esc.performed -= ctx => BackToLevelMenu();
+    }
+
 
 
 
@@ -44,6 +58,10 @@ public class GameManager : MonoBehaviour
         _weapons = Weapons;
         Instance = this;
         amount = maxAmount;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        input= new PlayerInput();
     }
 
     private void Start()
@@ -95,6 +113,12 @@ public class GameManager : MonoBehaviour
     public void StartGame(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+
+    public void BackToLevelMenu()
+    {
+        SceneManager.LoadScene("LevelsMenu");
     }
 
 }
