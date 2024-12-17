@@ -16,7 +16,7 @@ public class IslandBoss : Enemies
     protected override void Update()
     {
         base.Update();
-        anm.SetBool("Walk", agent.velocity.magnitude > 0.1f && !isDead);
+        anm.SetBool("Walk", !agent.isStopped && !isDead && !isAttacking);
     }
 
     protected  override IEnumerator  AttackPlayer()
@@ -26,6 +26,10 @@ public class IslandBoss : Enemies
         agent.isStopped = true;
         RotateTowardsPlayer();
         anm.SetTrigger("Attack");
+<<<<<<< Updated upstream
+=======
+        GameManager.Instance.Player.TakeDamage();
+>>>>>>> Stashed changes
         yield return new WaitForSeconds(attackRate);
         isAttacking = false;
         agent.isStopped = false;

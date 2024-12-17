@@ -307,12 +307,13 @@ MonoBehaviour:
   health: 100
   sightRange: 12
   attackRange: 6
-  attackRate: 0
+  attackRate: 1
   playerInSightRange: 0
   playerInAttackRange: 0
   deathAnimationTime: 0
   ice: {fileID: 5331735495089094581, guid: cab9c56d1714fa5428ec7a1b1a448c4e, type: 3}
   iceVelocity: 50
+  playerPos: {fileID: 0}
 --- !u!65 &6902884404809786037
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1055,7 +1055,11 @@ PrefabInstance:
       addedObject: {fileID: 7967317871736085064}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d1f0e14f3beb0d40b2932acdf39f739, type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 2588687619063382557}
+=======
+      addedObject: {fileID: 8607368100183476120}
+>>>>>>> Stashed changes
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d1f0e14f3beb0d40b2932acdf39f739, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2259646688595196002}
@@ -1149,7 +1153,11 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!114 &2588687619063382557
+=======
+--- !u!114 &8607368100183476120
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1171,7 +1179,11 @@ MonoBehaviour:
   characterFollow: {fileID: 1384568671361174963}
   aimFollow: {fileID: 4132391018432905905}
   bulletVelocity: 32
+<<<<<<< Updated upstream
   fireRate: 0.1
+=======
+  fireRate: 2
+>>>>>>> Stashed changes
   aimColliderLayerMask:
     serializedVersion: 2
     m_Bits: 17408

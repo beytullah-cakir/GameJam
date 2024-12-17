@@ -265,6 +265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (5)
@@ -1726,6 +1730,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1520902966}
   m_SourcePrefab: {fileID: 100100000, guid: 482a23eb854875b4ea0a9d1394443a6b, type: 3}
+<<<<<<< Updated upstream
 --- !u!4 &92400958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e0d1c26739530ca4c82894f0abe89740, type: 3}
@@ -3147,6 +3152,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d1c26739530ca4c82894f0abe89740, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &199425951
 GameObject:
   m_ObjectHideFlags: 0
@@ -4086,6 +4093,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 640ed0f16a104214f949508e36f8174c, type: 3}
+<<<<<<< Updated upstream
 --- !u!1001 &252085997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4943,6 +4951,12 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e0d1c26739530ca4c82894f0abe89740, type: 3}
   m_PrefabInstance: {fileID: 1038448131}
+=======
+--- !u!4 &284980438 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5940830915673714452, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
+  m_PrefabInstance: {fileID: 1820556630}
+>>>>>>> Stashed changes
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &307241678
 PrefabInstance:
@@ -5456,6 +5470,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (4)
@@ -5750,6 +5768,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (7)
@@ -6611,6 +6633,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (8)
@@ -8109,6 +8135,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (9)
@@ -8463,6 +8493,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (2)
@@ -8678,6 +8712,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01
@@ -9608,6 +9646,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (6)
@@ -12897,6 +12939,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (3)
@@ -13448,6 +13494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01
@@ -13579,6 +13629,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (9)
@@ -13633,6 +13687,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4149392523460021751, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
   m_PrefabInstance: {fileID: 968837401}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!4 &969719434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 31a21f59b5fc6b64cbddac89717a840e, type: 3}
@@ -15690,6 +15745,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6002048529173f944bdf19305a81d54c, type: 3}
   m_PrefabInstance: {fileID: 1892800016}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1128448394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15698,6 +15755,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (3)
@@ -16262,6 +16323,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (6)
@@ -16640,6 +16705,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (2)
@@ -17013,6 +17082,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (10)
@@ -19267,6 +19340,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (11)
@@ -19771,6 +19848,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (1)
@@ -20976,6 +21057,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (4)
@@ -22144,6 +22229,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (7)
@@ -22198,6 +22287,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4149392523460021751, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
   m_PrefabInstance: {fileID: 1629557776}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &1630475044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23638,6 +23728,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d1c26739530ca4c82894f0abe89740, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1714788906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23646,6 +23738,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (5)
@@ -23851,6 +23947,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01
@@ -25447,18 +25547,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1093353779881304771, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
-      propertyPath: fireRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1093353779881304771, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 400702784}
-    - target: {fileID: 1093353779881304771, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
-      propertyPath: thirdPersonFollow
-      value: 
-      objectReference: {fileID: 1982448217}
     - target: {fileID: 1542923079915525434, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
       propertyPath: m_Name
       value: Player
@@ -25503,20 +25591,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1093353779881304771, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
+    - target: {fileID: 8607368100183476120, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
+      propertyPath: fireRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607368100183476120, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 400702784}
+    - target: {fileID: 8607368100183476120, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
+      propertyPath: bulletVelocity
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607368100183476120, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
+      propertyPath: thirdPersonFollow
+      value: 
+      objectReference: {fileID: 1982448217}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1542923079915525434, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1820556640}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
 --- !u!4 &1820556632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1384568671361174963, guid: 0765d4e5ca432d34293ae49c9af21a29, type: 3}
   m_PrefabInstance: {fileID: 1820556630}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!114 &1820556640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25551,6 +25652,8 @@ MonoBehaviour:
   aimDistance: 2
   followDistance: 4
   isDead: 0
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1825795160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 378334508266577950, guid: e94711451283b5e4ea97dd9bec1c8506, type: 3}
@@ -26180,6 +26283,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (8)
@@ -28033,6 +28140,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 620245006}
     m_Modifications:
+    - target: {fileID: 3417528672454953574, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 284980438}
     - target: {fileID: 3665448684949034829, guid: 668caeef3f091244986846c489fc2dd6, type: 3}
       propertyPath: m_Name
       value: Snow Man_01 (1)

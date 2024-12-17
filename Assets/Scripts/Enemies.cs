@@ -113,7 +113,7 @@ public class Enemies : MonoBehaviour
     {
         isDead = true;
         anm.SetTrigger("Die");
-        agent.isStopped = true;
+        //agent.isStopped = true;
         agent.enabled = false;
         GetComponent<BoxCollider>().enabled = false;
 
@@ -127,9 +127,6 @@ public class Enemies : MonoBehaviour
 
     protected virtual IEnumerator AttackPlayer()
     {
-        if (isAttacking) yield break;
-        isAttacking = true;
-        agent.isStopped = true;
-        RotateTowardsPlayer();
+        yield return null;
     }
 }
